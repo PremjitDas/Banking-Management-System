@@ -1,0 +1,4 @@
+display account detail when account number and pin is enter 
+update acc detail(email , mobile,atm-pin)
+delete acc when acc number and pin is given 
+transfer money from one account to another acc when receiver(acc_num,name,mobile_num), sender(acc_number,atm_pin,amount)

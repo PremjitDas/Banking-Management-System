@@ -126,17 +126,3 @@ def Menu ():
         print("INVALID INPUT")
 
 Menu()
-    # print(id)
-    # print(name)
-    # print(age)
-    # print(email)
-    # print(mobile)
-    # print(account_number)
-    # print(atm_number)
-    # print(cvv)
-    # print(expiry_date)
-    # print(atm_pin)
-    # print(balance)
-
-
-# acc_create("Ricky", 20, "Ricky@gmail.com", '9674819291','6615141311128710',1234,10000)
