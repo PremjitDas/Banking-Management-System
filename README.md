@@ -39,7 +39,24 @@ Before running the script, make sure you have the following:
 - Validates the account number and ATM pin.
 - Checks for sufficient funds before processing the withdrawal.
 - Updates the account balance in the database.
+### 4. Update Account
+- Permits users to update their account information such as name, email, and mobile number.
+- Validates the account number and ATM pin.
+- Updates the user details in the MySQL database.
+### 5. Delete Account
+- Allows users to close their account.
+- Validates the account number and ATM pin.
+- Removes the user's details from the MySQL database.
+### 6. Display Account Information
+- Displays detailed information about the user's account.
+- Validates the account number and ATM pin.
+- Retrieves and shows the user details from the MySQL database.
+
 ## Usage
 - Create Account
 - Credit (Deposit)
 - Withdraw
+- Update Account
+- Display Account Information 
+- Delete Account
+
