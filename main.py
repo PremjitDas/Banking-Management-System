@@ -95,16 +95,87 @@ def withdraw():
             print("\nPlease enter correct account number and ATM pin")
     except Exception as e:
         print(f"Error: {e}")
+        
+        
+def delete_acc ():
+    account_number = input("\nEnter Account Number: ")
+    atm_pin = input("\nEnter ATM pin: ")
+    cvv=input("\n Enter your cvv number:")
+    try:
+        query = "SELECT * FROM userDetails WHERE account_number = %s AND atm_pin = %s AND cvv = %s"
+        cursor.execute(query, (account_number, atm_pin,cvv))
+        data = cursor.fetchall()
+        
+        if data:
+            query2 = "DELETE from userDetails WHERE account_number = %s AND atm_pin = %s AND cvv = %s"
+            cursor.execute(query2, (account_number, atm_pin,cvv))
+            connection.commit()
+            print("Account successfully deleted.")
+        else:
+            print("\nPlease enter correct account number and ATM pin")
+            
+    except Exception as e:
+        print(f"Error: {e}")
+        
+        
+def update_acc():
+    
+    account_number = input("\nEnter Account Number: ")
+    atm_pin = input("Enter ATM pin :")
+    
+    try:
+        query ="SELECT * FROM userDetails WHERE account_number = %s AND atm_pin = %s"
+        cursor.execute(query,(account_number, atm_pin))
+        data = cursor.fetchall()
+        
+        if data:
+            new_email = input("Enter Your New Email_id :")
+            new_mobile_number =input("Enter your New Mobile number :")
+            new_atm_pin =input("Enter Your New ATM_PIN :")
+            query2 = "UPDATE userDetails SET email = %s, mobile = %s , atm_pin = %s WHERE account_number = %s AND atm_pin = %s"
+            cursor.execute(query2, ( new_email ,new_mobile_number,new_atm_pin,account_number, atm_pin))
+            connection.commit()
+            print("Account successfully Updated.")
+        else:
+            print("\nPlease enter correct account number and ATM pin")
+            
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+
+def display_acc():
+    
+    account_number = input("\nEnter Account Number: ")
+    atm_pin = input("Enter ATM pin :")
+    
+    try:
+        query ="SELECT * FROM userDetails WHERE account_number = %s AND atm_pin = %s"
+        cursor.execute(query,(account_number, atm_pin))
+        data = cursor.fetchall()
+        
+        if data:
+            print("\n*****ACCOUNT DETAILS*****\n")
+            print(f"Account Holder's Name: {data[0][1]}")
+            print(f"Age: {data[0][2]}")
+            print(f"Email: {data[0][3]}")
+            print(f"Mobile Number: {data[0][4]}")
+            print(f"Account Number: {data[0][6]}")
+            print(f"ATM Number: {data[0][7]}")
+            print(f"Balance: {data[0][11]}")
+                 
+        else:
+            print("\nPlease enter correct account number and ATM pin")
+            
+    except Exception as e:
+        print(f"Error: {e}")
 
 # Example usage
 
-
-    
-
-
 # Menu
 def Menu ():
-    option = int(input("Please enter \n1. Create Account\n2.Creadit\n3. Withdraw \n>"))
+    print("******Bank Of Bob******")
+    option = int(input("Please enter : \n1. Create Account\n2.Creadit\n3. Withdraw \n4.Delete Account\n5.Update Account\n6.Display Account Detail\n -> "))
     if option == 1:
         try:
             name=input("Enter your name :")
@@ -122,6 +193,12 @@ def Menu ():
         credit()
     elif option == 3:
         withdraw()
+    elif option == 4:
+        delete_acc()
+    elif option == 5:
+        update_acc()
+    elif option == 6:
+        display_acc()
     else:
         print("INVALID INPUT")
 
